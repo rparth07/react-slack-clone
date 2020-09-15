@@ -7,7 +7,7 @@ Make sure you have npm and node and create-react-app tool.
         
 OR
 
-		git clone https://github.com/rparth07/react-slack-clone.git
+	    git clone https://github.com/rparth07/react-slack-clone.git
 
 
 Starting a project
