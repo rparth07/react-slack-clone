@@ -8,6 +8,7 @@ class SignIn extends Component {
         <button>Sign in with Google</button>
         <form>
           <input name="email" />
+          <br />
           <input name="password" />
         </form>
       </div>

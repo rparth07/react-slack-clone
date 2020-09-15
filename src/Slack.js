@@ -5,9 +5,15 @@ import MainContainer from './MainContainer';
 class Slack extends Component {
   render() {
     return (
-      <div>
-        <Sidebar />
-        <MainContainer />
+      <div id="sidebar">
+        <div className="user-profile">
+          <div>
+            Image
+            <img />
+          </div>
+          <div>Ronald</div>
+        </div>
+        <div className="user-channels"></div>
       </div>
     );
   }
