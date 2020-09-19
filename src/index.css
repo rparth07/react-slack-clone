@@ -79,7 +79,7 @@ code {
   margin: 0;
 }
 #sidebar .channels {
-  /* padding: 10px 15px; */
+  padding: 10px 15px;
 }
 #sidebar .channels .header {
   font-weight: 500;
@@ -136,6 +136,8 @@ code {
 }
 
 #main-container .messages-list .right-block {
+  /**/
+  height: 25px;
 }
 
 #main-container .messages-list .right-block .user {
