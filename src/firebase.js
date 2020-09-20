@@ -13,9 +13,12 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
 export const firestore = firebase.firestore();
+
 export const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
+
 export const signInWithGoogle = () => {
   auth.signInWithPopup(googleProvider);
 };
@@ -31,24 +34,26 @@ export const createOrGetUserProfileDocument = async (user) => {
 
   if (!snapshot.exists) {
     const { displayName, email, photoURL } = user;
+    const createdAt = new Date();
     try {
       const user = {
         displayName: displayName,
         email,
         photo_Url: photoURL,
-        created_at: new Date(user),
+        created_at: createdAt,
       };
       await userRef.set(user);
     } catch (error) {
-      console.log('Error', error);
+      console.log('Error avi', error);
     }
   }
   return getUserDocument(user.uid);
 };
+
 async function getUserDocument(uid) {
   if (!uid) return null;
   try {
-    const getUserDocument = await firestore.collection('user').doc(uid);
+    const getUserDocument = await firestore.collection('users').doc(uid);
     return getUserDocument;
   } catch (error) {
     console.error('Error in getUserDocument', error.message);
