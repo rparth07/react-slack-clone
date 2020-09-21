@@ -1,12 +1,9 @@
 import React, { useContext } from 'react';
 import SignIn from './SignIn';
 import './App.css';
-//import { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-//import MainContainer from './MainContainer';
 import Slack from './Slack';
-//import { functions } from 'firebase';
-import { /*UseContext,*/ UserContext } from './providers/Userproviders';
+import { UserContext } from './providers/Userproviders';
 
 const PrivateRoute = ({ component: Component, isLoggedIn, ...others }) => {
   return (
@@ -49,7 +46,6 @@ function App() {
           component={Slack}
           isLoggedIn={auth.user ? true : false}
         />
-        {/* <Route exact path="/slack" component={Slack} /> */}
       </Switch>
     </div>
   );
