@@ -14,7 +14,9 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+// Firestore stuff
 export const firestore = firebase.firestore();
+window.firestore = firestore;
 
 export const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -36,26 +38,29 @@ export const createOrGetUserProfileDocument = async (user) => {
     const { displayName, email, photoURL } = user;
     const createdAt = new Date();
     try {
-      const user = {
-        displayName: displayName,
+      await userRef.set({
+        display_name: displayName, //|| additionalData.displayName,
         email,
-        photo_Url: photoURL,
+        photo_url: photoURL
+          ? photoURL
+          : 'https://ca.slack-edge.com/T0188513NTW-U01867WD8GK-ga631e27835b-72',
         created_at: createdAt,
-      };
-      await userRef.set(user);
+        //...additionalData,
+      });
     } catch (error) {
-      console.log('Error avi', error);
+      console.error('Error creating user', error.message);
     }
   }
   return getUserDocument(user.uid);
 };
 
-async function getUserDocument(uid) {
+export const getUserDocument = async (uid) => {
   if (!uid) return null;
+
   try {
-    const getUserDocument = await firestore.collection('users').doc(uid);
-    return getUserDocument;
+    const UserDocument = await firestore.collection('users').doc(uid);
+    return UserDocument;
   } catch (error) {
-    console.error('Error in getUserDocument', error.message);
+    console.error('Error in fetching user', error.message);
   }
-}
+};

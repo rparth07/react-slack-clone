@@ -10,7 +10,7 @@ import MainContainer from './MainContainer';*/
 import Userproviders from './providers/Userproviders';
 
 ReactDOM.render(
-  <Userproviders data={[1, 2]}>
+  <Userproviders data="">
     <BrowserRouter>
       <App />
     </BrowserRouter>

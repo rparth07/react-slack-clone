@@ -1,7 +1,7 @@
-import React, { Component, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { UserContext } from './providers/Userproviders';
-import { signInWithGoogle, signOut } from './firebase';
+import { signInWithGoogle } from './firebase';
 
 function SignIn(props) {
   const auth = useContext(UserContext);
